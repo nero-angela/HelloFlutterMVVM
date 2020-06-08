@@ -1,39 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/router.dart';
+import 'package:flutter_tutorial/screen/base_view.dart';
 import 'package:flutter_tutorial/screen/login/login_view_model.dart';
-import 'package:provider/provider.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<LoginViewModel>(
-      create: (BuildContext context) => LoginViewModel(),
-      child: Consumer<LoginViewModel>(
-        child: _header(), // widget that don't need to rebuild
-        builder: (BuildContext context, LoginViewModel model, Widget child) {
-          return Scaffold(
-            body: GestureDetector(
-              // hide softkeyboard when click the background
-              onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-              behavior: HitTestBehavior.translucent,
-              child: Padding(
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    child,
-                    _textField(context, model),
-                    _validation(context, model),
-                    _loginButton(context, model),
-                  ],
-                ),
+    return BaseView<LoginViewModel>(
+      model: LoginViewModel(),
+      child: _header(),
+      builder: (BuildContext context, LoginViewModel model, Widget child) {
+        return Scaffold(
+          body: GestureDetector(
+            // hide softkeyboard when click the background
+            onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+            behavior: HitTestBehavior.translucent,
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  child,
+                  _textField(context, model),
+                  _validation(context, model),
+                  _loginButton(context, model),
+                ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 
@@ -58,7 +56,7 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  _validation(BuildContext context, LoginViewModel model) {
+  Widget _validation(BuildContext context, LoginViewModel model) {
     return Text(
       model.isValid || model.id.isEmpty ? '' : 'Enter a number between 1 - 10',
       style: TextStyle(color: Colors.pinkAccent),
