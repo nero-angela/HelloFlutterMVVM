@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/screen/home/home_view.dart';
+import 'package:flutter_tutorial/screen/login/login_view.dart';
 
 class RoutePaths {
   static const String Home = '/';
+  static const String Login = '/login';
 }
 
 class Router {
@@ -10,6 +12,9 @@ class Router {
     switch (settings.name) {
       case RoutePaths.Home:
         return MaterialPageRoute(builder: (_) => HomeView());
+
+      case RoutePaths.Login:
+        return MaterialPageRoute(builder: (_) => LoginView());
 
       default:
         return MaterialPageRoute(
