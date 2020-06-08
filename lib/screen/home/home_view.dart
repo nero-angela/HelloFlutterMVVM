@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/model/users.dart';
+import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key key}) : super(key: key);
@@ -11,7 +13,7 @@ class HomeView extends StatelessWidget {
         backgroundColor: Colors.pinkAccent,
       ),
       body: Center(
-        child: Text('Hello Flutter'),
+        child: Text('Welcome ${Provider.of<User>(context).name}'),
       ),
     );
   }
