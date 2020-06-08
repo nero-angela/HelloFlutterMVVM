@@ -77,7 +77,6 @@ class LoginView extends StatelessWidget {
         onPressed: model.isValid
             ? () async {
                 var loginSuccess = await model.login(model.id);
-                print(loginSuccess);
                 if (loginSuccess) Navigator.pushNamed(context, RoutePaths.Home);
               }
             : null,

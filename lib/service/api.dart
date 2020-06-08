@@ -7,7 +7,6 @@ class Api {
   Future<User> getUserProfile(int userId) async {
     try {
       Response response = await Dio().get('$endpoint/users/$userId');
-      print(response.data);
       return User.fromMap(response.data);
     } catch (e) {
       print(e);

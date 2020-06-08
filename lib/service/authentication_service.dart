@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter_tutorial/model/users.dart';
 import 'package:flutter_tutorial/service/api.dart';
 
-// 전역적으로 쓰임
 class AuthenticationService {
   final Api _api;
 
