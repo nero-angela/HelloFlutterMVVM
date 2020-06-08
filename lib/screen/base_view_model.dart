@@ -6,7 +6,7 @@ class BaseViewModel extends ChangeNotifier {
 
   get busy => _busy;
 
-  set busy(bool value) {
+  void setBusy(bool value) {
     _busy = value;
     if (_mounted) this.notifyListeners();
   }

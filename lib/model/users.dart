@@ -10,17 +10,9 @@ class User {
         name = '',
         username = '';
 
-  User.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    username = json['username'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['username'] = this.username;
-    return data;
+  User.fromMap(Map<String, dynamic> map) {
+    id = map['id'];
+    name = map['name'];
+    username = map['username'];
   }
 }

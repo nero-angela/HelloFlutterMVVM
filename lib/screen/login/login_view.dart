@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/router.dart';
 import 'package:flutter_tutorial/screen/base_view.dart';
 import 'package:flutter_tutorial/screen/login/login_view_model.dart';
+import 'package:provider/provider.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key key}) : super(key: key);
@@ -9,7 +10,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<LoginViewModel>(
-      model: LoginViewModel(),
+      model: LoginViewModel(authenticationService: Provider.of(context)),
       child: _header(),
       builder: (BuildContext context, LoginViewModel model, Widget child) {
         return Scaffold(
@@ -25,7 +26,9 @@ class LoginView extends StatelessWidget {
                   child,
                   _textField(context, model),
                   _validation(context, model),
-                  _loginButton(context, model),
+                  model.busy
+                      ? CircularProgressIndicator()
+                      : _loginButton(context, model),
                 ],
               ),
             ),
@@ -72,7 +75,11 @@ class LoginView extends StatelessWidget {
         color: Colors.pinkAccent,
         disabledColor: Colors.grey,
         onPressed: model.isValid
-            ? () => Navigator.pushNamed(context, RoutePaths.Home)
+            ? () async {
+                var loginSuccess = await model.login(model.id);
+                print(loginSuccess);
+                if (loginSuccess) Navigator.pushNamed(context, RoutePaths.Home);
+              }
             : null,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         child: Text(
