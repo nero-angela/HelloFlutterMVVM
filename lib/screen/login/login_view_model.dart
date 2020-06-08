@@ -1,6 +1,6 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter_tutorial/screen/base_view_model.dart';
 
-class LoginViewModel extends ChangeNotifier {
+class LoginViewModel extends BaseViewModel {
   String _id = '';
 
   bool _isValid = false;
