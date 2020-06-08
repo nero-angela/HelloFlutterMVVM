@@ -6,6 +6,10 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+        backgroundColor: Colors.pinkAccent,
+      ),
       body: Center(
         child: Text('Hello Flutter'),
       ),

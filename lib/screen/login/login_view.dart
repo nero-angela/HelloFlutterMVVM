@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/router.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key key}) : super(key: key);
@@ -39,7 +40,9 @@ class LoginView extends StatelessWidget {
                   height: 50,
                   child: FlatButton(
                     color: Colors.pinkAccent,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, RoutePaths.Home);
+                    },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                       side: BorderSide(color: Colors.red),
