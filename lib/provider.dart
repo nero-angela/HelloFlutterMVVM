@@ -1,4 +1,4 @@
-import 'package:flutter_tutorial/model/users.dart';
+import 'package:flutter_tutorial/model/user.dart';
 import 'package:flutter_tutorial/service/api.dart';
 import 'package:flutter_tutorial/service/authentication_service.dart';
 import 'package:provider/provider.dart';

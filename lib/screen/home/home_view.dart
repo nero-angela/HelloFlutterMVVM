@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorial/model/users.dart';
+import 'package:flutter_tutorial/model/user.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
